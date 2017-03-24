@@ -1,12 +1,12 @@
 1. Clone repo
 2. At the top of the directory run the following commands:
-# Ensure machine is up
+### Ensure machine is up
 vagrant up
 
-# ssh to the machine
+### ssh to the machine
 vagrant ssh
 
-# cd to the directory with the scripts
+### cd to the directory with the scripts
 cd /vagrant/tournament
 
 3. Clean up the database with the following command
