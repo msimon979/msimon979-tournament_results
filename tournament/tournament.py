@@ -112,15 +112,19 @@ def swissPairings():
     """
     DB = psycopg2.connect("dbname=tournament")
     c = DB.cursor()
-    sql = "SELECT id, name FROM standings"
-    c.execute(sql)
-    results = c.fetchall()
+    c.execute("select id from standings order by Wins;")
+    ids = c.fetchall()
+    c.execute("select p.name from players p join standings s on p.id = s.id order by wins;")
+    names = c.fetchall()
+    standings = playerStandings()
+
+    pair1 = zip(ids[0],names[0], ids[1], names[1])
+    pair2 = zip(ids[2],names[2], ids[3],names[3])
+    pair3 = zip(ids[4],names[4], ids[5],names[5])
+    pair4 = zip(ids[6],names[6], ids[7],names[7])
+
+    tuples = pair1 + pair2 + pair3 + pair4
+    return tuples
     DB.close
-
-    pairs = []
-    for x in range(0, countPlayers()-1,2):
-        pairs.append(results[x] + results[x+1])
-
-    return pairs
 
 
